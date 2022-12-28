@@ -1,0 +1,99 @@
+{% extends 'leads/dashboard.html' %}
+
+{% block content %}
+<style>
+  table tr th{
+      background-color: #3c8df0;
+      color: #e1e1e1;
+      border: 1px solid #ffffff;
+      text-align: center;
+    }
+  
+  table tr td{
+    background-color: #ffffff;
+    text-align: center;
+  }
+  </style>
+
+<div id="page-wrapper">
+    <div id="page-inner">
+     
+        <div class="row">
+            <div class="col-md-12">
+              <table style="width: 100%;">
+                <tr>
+                  <td><h1 style="padding-left: 20px;text-align: justify;color: #e24a4a;">List of Team Leader</h1></td>
+                  <td style="background-color: #ffffff;text-align:right;padding-right: 12px;"><a href="/staffmanag/register_emp/"><button class="btn btn-success">+ Create New User</button></a></td>
+                </tr>
+              </table>
+              <hr>
+                
+              <div>
+                {% if messages %}
+                <p class="messagelist" style="font-weight: bold;border-radius: 10px;background-color: #ffffff;padding: 10px;font-size: 18px;color: rgb(44, 230, 19);">{% for message in messages %}{{ message }}{% endfor %}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            
+            <section class="section-products">
+              
+              <div class="container col-md-12">
+                
+                      <!-- Single Product -->
+                      <table class="table" >
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            
+                            <th>User Type</th>
+                            <th>Action</th>
+
+                        </tr>
+                    
+                        {% for i in my_users %}
+                        
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                            <td>{{ i.first_name }} {{ i.last_name }}</td>
+                            
+                            
+                            <td>
+                              Team Leader
+                          </td>
+                            
+                                                    
+                            <td>
+                              
+                              <a href="{% url 'view_details' id=i.id %}"><i class="fa fa-eye" style="font-size:20px;color: #166ad1;"></i></a>
+                                 
+                        
+                                </tr>
+                        
+                        {% endfor %}
+                        
+                    </table>
+                     
+                  
+              </div>
+          </section>
+        </div>
+        <!-- /. ROW  -->
+     </div>   
+
+        
+    </div>
+
+
+
+
+
+    
+{% endblock content %}
+
+    
+
+
+
+
+

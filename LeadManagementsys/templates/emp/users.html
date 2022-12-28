@@ -1,0 +1,86 @@
+{% extends 'emp/dashboard.html' %}
+
+{% block content %}
+
+<style>
+table tr th{
+    background-color: #3c8df0;
+    color: #e1e1e1;
+    border: 1px solid #ffffff;
+    text-align: center;
+  }
+
+table tr td{
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+}
+</style>
+<div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                              {% comment %} <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search by, Property name, amount, status" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                              </form> {% endcomment %}
+                           
+                          {% if messages %}
+                            {% for message in messages %}
+                              <p style="background-color: #76e268;padding-left: 20px;">{{ message }}</p>
+                            {% endfor %}
+                          {% endif %} 
+                           <h1 class="page-head-line">List of System User</h1>
+                            
+                        <div style="padding: 20px;margin-left:80%">
+                          <a href="/teamleader/register_user/"><button class="btn btn-success">+ Create New User</button></a>
+                          </div>
+
+                        
+                    </div>
+                
+                       <table class="table" >
+                              <tr>
+                                  <th>S.No</th>
+                                  <th>Name</th>
+                                  
+                                  <th>User Type</th>
+                                  <th>Action</th>
+
+                              </tr>
+                          
+                              {% for i in my_users %}
+                              
+                              <tr>
+                                <td>{{forloop.counter}}</td>
+                                  <td>{{ i.first_name }} {{ i.last_name }}</td>
+                                  
+                                  
+                                  <td>
+                                    <b>Employee</b>
+                                </td>
+                                  
+                                                          
+                                  <td>
+                                    
+                                    <a href="{% url 'view_detail' id=i.id %}"><i class="fa fa-eye" style="font-size:20px;color: #166ad1;"></i></a>
+                                       
+                              
+                                      </tr>
+                              
+                              {% endfor %}
+                              
+                          </table>
+            
+                        
+                   </div>
+                  </div>
+                {% endblock content %}
+
+    
+
+
+
+
+
